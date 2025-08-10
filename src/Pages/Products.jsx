@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { productcontext } from "../context/ProductContext";
-import SigleProduct from "./SigleProduct";
+import ProductCard from "./ProductCard";
 
 const Products = () => {
   const [data] = useContext(productcontext);
   const [search, setsearch] = useState("")
   console.log(search);
 
-  console.log(data);
+  // console.log(data);
 
   if (!data) return <p>loading..</p>;
 
@@ -15,13 +15,13 @@ const Products = () => {
 
   const render2 = fiteredData.map((product) => (
     
-    <SigleProduct product={product} key={product.id} />
+    <ProductCard product={product} key={product.id} />
   ));
 
 
   const render = data.map((product) => (
     
-    <SigleProduct product={product} key={product.id} />
+    <ProductCard product={product} key={product.id} />
   ));
 
 
