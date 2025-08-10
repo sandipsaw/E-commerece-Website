@@ -2,18 +2,18 @@ import React, {  createContext, useEffect, useState } from 'react'
 
 export const productcontext =  createContext()
 
-const ProductContext = (props) => {
+const ProductContext = ({children}) => {
     const [data,setdata] = useState([])
 
     useEffect(() => {
-      setdata(JSON.parse(localStorage.getItem("product")) || []) 
+      setdata(JSON.parse(localStorage.getItem("products")) || []) 
     }, [])
-    console.log(data);
+   
     
 
   return (
         <productcontext.Provider value={[data,setdata]}>
-            {props.children}
+            {children}
         </productcontext.Provider>
   )
 }

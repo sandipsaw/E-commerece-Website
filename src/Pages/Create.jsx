@@ -2,11 +2,13 @@ import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { productcontext } from '../context/ProductContext'
 import { nanoid } from 'nanoid'
+import { useNavigate } from 'react-router-dom'
 
 const Create = () => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm()
     const [data, setdata] = useContext(productcontext)
+    const navigate=useNavigate()
     const submitHandler = (product) => {
 
         product.id = nanoid()
@@ -14,9 +16,10 @@ const Create = () => {
         copydata.push(product)
         setdata(copydata)
         localStorage.setItem("products",JSON.stringify(copydata))
+        navigate("/products")
         reset();
     }
-    console.log(data);
+    
 
 
     return (
